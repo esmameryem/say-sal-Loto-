@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <title><strong>Sayısal Loto Oyunu</strong></title>
+    </head>
+<body>
+    <p>Asağıdaki inputlara tahminlerinizi giriniz.</p>
+<form onsubmit="TahminGir(event)">
+    <input type="number" min="1" max="49" required />
+    <input type="number" min="1" max="49" required />
+    <input type="number" min="1" max="49" required />
+    <input type="number" min="1" max="49" required />
+    <input type="number" min="1" max="49" required />
+    <input type="number" min="1" max="49" required />
+    <input type="submit"  name="Tahmin Gir" value="Tahmin Gir"/>
+</form>
+    <br><br>
+   
+    <div>
+        <hr>
+    </div>
+    <input type="submit" name="Kurayi Çek" value="Kurayi Çek"/>
+    <p>Loto Sayilari</p>
+<form id="Kurasonuclari">
+    <input type="number" name="kutu1" value="kutu1"/>
+    <input type="number" name="kutu2" value="kutu2"/>
+    <input type="number" name="kutu3" value="kutu3"/>
+    <input type="number" name="kutu4" value="kutu4"/>
+    <input type="number" name="kutu5" value="kutu5"/>
+    <input type="number" name="kutu6" value="kutu6"/>
+</form>
+    <script>
+  
+  function TahminGir(event) {
+  event.preventDefault();
+
+  const data = Array.from(new FormData(event.target).values());
+
+  const sayiDogruMu = data.every(
+    (element) => Number(element) > 0 && Number(element) < 49
+  );
+
+  const ayniMi = data.some((element, index) => {
+    return data.indexOf(element) !== index;
+  });
+
+  if (!sayiDogruMu) {
+    alert("Sayıları Kontrol et");
+  }
+  console.log(data);
+  console.log(sayiDogruMu, "dogru mu");
+  console.log(ayniMi, "Aynimi");
+}
+    
+        </script>
+</body>
+
+</html>
